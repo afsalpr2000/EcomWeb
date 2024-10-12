@@ -1,0 +1,49 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% block title %}
+KidsPark | Edit Product
+{% endblock %}
+{% block content %}
+
+<h1>Edit Product</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="table-responsive p-5 m-3" height="500px" width="50%">
+
+            <tr>
+                <td><label for="product_name">Name:</label></td>
+                <td><input type="text" id="product_name" name="product_name" value="{{ product.name }}" required class="form-control"></td>
+            </tr>
+            <tr>
+                <td><label for="product_description">Description:</label></td>
+                <td><textarea id="product_description" name="product_description" required class="form-control">{{ product.description }}</textarea></td>
+            </tr>
+        
+            <tr>
+                <td><label for="product_image">Image:</label></td>
+                <td><input type="file" id="product_image" name="product_image"   class="form-control"></td>
+            </tr>
+            <tr>
+                <td><label for="product_category">Category:</label></td>
+                <td>
+                    <select id="product_category" name="product_category" required class="form-control">
+                        {% for category in categories %}
+                        <option value="{{ category.id }}" {% if category.id == product.category.id %} selected {% endif %}>{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="product_price">Price:</label></td>
+                <td><input type="number" id="product_price" name="product_price" value="{{ product.price }}" required class="form-control"></td>
+            </tr>
+            <tr>
+                <td><label for="product_stock">Stock</label></td>
+                <td><input type="number" id="product_stock" name="product_stock" value="{{ product.stock }}" required class="form-control"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" class ="btn btn-primary" value="Update Details" /></td>
+            </tr>
+        
+        </table>
+    </form>
+{% endblock %}

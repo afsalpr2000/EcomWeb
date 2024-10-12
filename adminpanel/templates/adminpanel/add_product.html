@@ -1,0 +1,22 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% block title %}
+KidsPark | Add Product
+{% endblock %}
+{% block content %}
+<h2>Create a new product</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- {{ form.as_p}} -->
+
+    {% for field in form %}
+    <div class="row">
+        <div class="col-4">{{ field.label_tag }}</div>
+        <div class="col-4">{{ field }}</div>
+        <div class="col-4">{{ field.errors }}</div>
+    </div>
+    {% endfor %}
+
+    <input type="submit" value="ADD PRODUCT" class="btn btn-primary"/>
+</form>
+
+{% endblock %}

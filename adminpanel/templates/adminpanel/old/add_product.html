@@ -1,0 +1,40 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% block title %}
+KidsPark | Add Product
+{% endblock %}
+{% block content %}
+<h2>Create a new product</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table-responsive p-5 m-3" height="500px" width="50%">
+        <tr>
+            <th><label>Product Name</label></th><td><input type="text" name="product_name" class="form-control"/></td>
+        </tr>
+        <tr>
+            <th><label>Description</label></th><td><textarea rows="4" cols="4" name="product_description" class="form-control"></textarea></td>
+        </tr>
+        <tr>
+            <th><label>Product Image</label></th><td><input type="file" name="product_image" class="form-control"/></td>
+        </tr>
+        <tr>
+            <th><label>Price</label></th><td><input type="number" name="product_price" class="form-control"/></td>
+        </tr>
+        <tr>
+            <th><label>Stock</label></th><td><input type="number" name="product_stock" class="form-control"/></td>
+        </tr>
+        <tr>
+            <th><label>Category</label></th>
+            <td>
+                <select name="product_category" class="form-control">
+                    {% for category in categories %}
+                    <option value="{{category.id}}">{{category.name}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr style="text-align: center;"><td colspan="2"><button type="submit" class = "btn btn-primary">Save</button></td></tr>
+    </table>
+    
+</form>
+
+{% endblock %}

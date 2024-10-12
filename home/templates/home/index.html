@@ -1,0 +1,31 @@
+{% extends 'home/base.html' %}
+{% block title %}
+KidsPark | Home
+{% endblock %}
+{% block content %}
+
+<div class="row m-5">
+{% for product in products %}
+    <div class="col-3 m-5">
+        <div class="card" style="width: 18rem; height:500px">
+            <img src="{{ product.image.url }}" class="card-img-top" alt="..." width="250px" height="250px">
+            <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{product.description}} <br>Rs. {{product.price}}/- <br>
+                {% if product.stock != 0 %} 
+                   <label style="color: blue;"> Stock {{product.stock}} available</label><br>
+                {% else %}
+                <label style="color:red">Currently Unavailable!!!</label>
+                {% endif %}
+                <label class="btn btn-secondary">{{ product.category.name }}</label>
+            </p>
+        </p>
+          
+            </div>
+        </div>
+    </div>
+
+  {% endfor %}
+</div>
+{% endblock %}
+

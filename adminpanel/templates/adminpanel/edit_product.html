@@ -1,0 +1,14 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% block title %}
+KidsPark | Edit Product
+{% endblock %}
+{% block content %}
+
+<h1>Edit Product</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p}}
+    <input type="submit" value="UPDATE PRODUCT" class="btn btn-primary"/>
+   
+    </form>
+{% endblock %}
